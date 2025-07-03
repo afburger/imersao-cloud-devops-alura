@@ -1,0 +1,16 @@
+services:
+  # Serviço principal da sua aplicação Python
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual
+    build: .
+    # Define a imagem base para o contêiner
+    container_name: devops
+    # Mapeia a porta 8000 do contêiner para a porta 8000 da sua máquina
+    ports:
+      - "8000:8000"
+
+    # Monta o diretório atual no diretório /app do contêiner.
+    # Isso permite que o "hot-reload" do Uvicorn funcione,
+    # pois as alterações no seu código local são refletidas instantaneamente.
+    volumes:
+      - .:/app
